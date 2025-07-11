@@ -1,11 +1,17 @@
 from flask import Blueprint 
-#aca llamaria al controlador
+from src.infraestructure.rut_gateway import RutGateway
+from src.application.rut_usecase import RutUseCase
+from .controllers import PersonController
 
-def create_routes(app):
-    blueprint = Blueprint("api", __name__)
 
-    rut_controller = create_rut_controller()
+http_bp = Blueprint("http_bp", __name__)
+usecase = RutUseCase(RutGateway())
+controller = PersonController(usecase)
 
-    blueprint.add_url_rule("/api/v1/persona/rut/<rut>", "funcion", rut_controller)
+@http_bp.route("/persona/rut/<rut>", methods=["GET"])
+def persona_rut(rut):
+    return controller.get_person(rut)
 
-    app.register_blueprint(blueprint)
+@http_bp.route("/persona/buscar/<nombre>", methods=["GET"])
+def persona_buscar(nombre):
+    return controller.search_person(nombre)

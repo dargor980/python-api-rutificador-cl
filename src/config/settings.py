@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Settings:
-    PORT: int = int(os.getenv("PORT", 5000))
-    RUTIFICADOR_URL: str = "https://rutificador.org/backend.php"
+    PORT: int = int(os.getenv("PORT", 8000))
+    RUTIFICADOR_URL: str = "https://www.nombrerutyfirma.com"
 
 settings = Settings()
