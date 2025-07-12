@@ -4,6 +4,8 @@ from dataclasses import dataclass
 class Person:
     RUT: str 
     Nombre: str
+    Edad: str
     Sexo: str 
-    Direccion: str 
-    Ciudad: str
+    Direccion: str
+    Ciudad: str 
+    
