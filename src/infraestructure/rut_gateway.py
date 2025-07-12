@@ -6,7 +6,6 @@ from src.domain.ports import RutGatewayPort
 from src.config.settings import settings
 from .logger import logger 
 from playwright.sync_api import sync_playwright
-from playwright_stealth.stealth import Stealth
 
 class RutGateway(RutGatewayPort):
     def _fetch(self, action: str, value: str) -> BeautifulSoup:
